@@ -25,7 +25,7 @@ public class Cliente {
     // Main
     public static void main(String[] args) throws UnknownHostException, IOException {
         // dispara cliente
-        new Cliente("10.0.0.54", 12345, "Igor").executa();
+        new Cliente("127.0.0.1", 12345, "Igor").executa();
     }
    
     public void executa() throws UnknownHostException, IOException {
@@ -47,4 +47,4 @@ public class Cliente {
         teclado.close();
         cliente.close();    
     }
- }
+}
