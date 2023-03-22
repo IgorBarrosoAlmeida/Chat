@@ -30,9 +30,9 @@ public class Recebedor implements Runnable {
         while (s.hasNextLine()) {
             String msg = s.nextLine();
             // Pega o nome do usuario (primeira posição do texto separado por espaço)
-            String name = msg.split(" ")[0];
+            String nome = msg.split(" ")[0];
 
-            if(name.equals(this.name)) {
+            if(nome != name) {
                 System.out.println(s.nextLine());
             }
         }

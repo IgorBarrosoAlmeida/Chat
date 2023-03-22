@@ -40,7 +40,7 @@ public class Cliente {
         Scanner teclado = new Scanner(System.in);
         PrintStream saida = new PrintStream(cliente.getOutputStream());
         while (teclado.hasNextLine()) {
-            saida.println(this.name + teclado.nextLine());
+            saida.println(this.name + " " + teclado.nextLine());
         }
         
         saida.close();
