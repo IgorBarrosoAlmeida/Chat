@@ -1,4 +1,4 @@
-package src;
+package src.logica;
 
 /* Importações */
 import java.io.InputStream;
