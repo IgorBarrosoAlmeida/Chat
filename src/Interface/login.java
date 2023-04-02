@@ -6,6 +6,7 @@ import java.awt.event.*;
 
 public class Login extends JFrame implements ActionListener {
 	/* Atributos */
+	JPanel mainPanel;
 	JTextField usernameInput;
 	JLabel usernameLabel;
 	JButton loginButton;
@@ -19,23 +20,36 @@ public class Login extends JFrame implements ActionListener {
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
 
+		mainPanel = new JPanel();
+		mainPanel.setSize(new Dimension(400, 200));
+		mainPanel.setBackground(Color.DARK_GRAY);
+		mainPanel.setLayout(null);
+
 		// Caixa de texto e sua label
 		usernameLabel = new JLabel("Username");
-		usernameLabel.setBounds(160, 10, 200, 50);
+		usernameLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		usernameLabel.setBounds(154, 10, 200, 50);
+		usernameLabel.setForeground(Color.WHITE);
 
 		usernameInput = new JTextField();
+		usernameInput.setFont(new Font("Arial", Font.BOLD, 13));
 		usernameInput.setBounds(50, 50, 280, 30);
 
 		// Botão de enviar
 		loginButton = new JButton("Enter to chat");
-		loginButton.setBounds(130, 95, 120, 30);
+		loginButton.setFont(new Font("Arial", Font.BOLD, 15));
+		loginButton.setBounds(118, 95, 140, 30);
+		loginButton.setForeground(Color.WHITE);
+		loginButton.setBackground(Color.GRAY);
+
 		loginButton.addActionListener(this);
 
 		// Adiciona à janela principal
-		this.add(loginButton);
-		this.add(usernameLabel);
-		this.add(usernameInput);
+		mainPanel.add(loginButton);
+		mainPanel.add(usernameLabel);
+		mainPanel.add(usernameInput);
 
+		this.add(mainPanel);
 		this.setVisible(true);
 	}
 
