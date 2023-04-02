@@ -8,57 +8,75 @@ import java.awt.*;
 
 public class Interface extends JFrame implements KeyListener, ActionListener {
     /* Atributos */
-    private static JFrame mainWindow = new JFrame("Chat");
-    private static JPanel writeArea = new JPanel();
-    private static JTextField input = new JTextField(20);
-    private static JButton sendButton = new JButton("Send");
+    private JPanel mainPanel;
+    private JPanel messagePanel;
+    private JTextArea messageInput;
+    private JButton messageButton;
+    private JScrollPane scrollChat;
 
-    public static void main(String[] args) {
+    public Interface() {
+        // Config basica
+        this.setSize(new Dimension(400, 800));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("Chat");
+        this.setLocationRelativeTo(null);
 
-        mainWindow.setSize(new Dimension(400, 800));
+        // Painel principal
+        mainPanel = new JPanel();
+        mainPanel.setSize(new Dimension(400, 800));
+        mainPanel.setBackground(Color.DARK_GRAY);
+        mainPanel.setLayout(null);
 
-        // Painel
-        writeArea.setSize(new Dimension(400, 800));
-        input.setSize(new Dimension(100, 300));
-        input.setBackground(Color.WHITE);
-        // font collor
-        input.setForeground(Color.DARK_GRAY);
-        writeArea.setBackground(Color.GRAY);
-        sendButton.setLocation(300, 300);
+        // Painel de escrita das mensagens
+        messagePanel = new JPanel();
+        messagePanel.setBounds(15, 705, 350, 45);
+        messagePanel.setBackground(Color.GRAY);
+        messagePanel.setLayout(null);
 
-        writeArea.add(input, BorderLayout.WEST);
-        writeArea.add(sendButton, BorderLayout.EAST);
-        mainWindow.add(writeArea, BorderLayout.SOUTH);
+        // Caixa de entrada da mensagem
+        messageInput = new JTextArea();
+        messageInput.setBounds(10, 10, 250, 20);
 
-        input.setVisible(true);
-        writeArea.setVisible(true);
-        mainWindow.setVisible(true);
+        // Botão de enviar
+        messageButton = new JButton("Send");
+        messageButton.setBounds(270, 10, 65, 20);
+
+        // Chat de fato
+        scrollChat = new JScrollPane();
+        scrollChat.setBounds(15, 10, 350, 680);
+        scrollChat.getViewport().setBackground(Color.GRAY);
+
+        messagePanel.add(messageButton);
+        messagePanel.add(messageInput);
+        mainPanel.add(scrollChat);
+        mainPanel.add(messagePanel);
+
+        this.add(mainPanel);
+        this.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method
-        // 'actionPerformed'");
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method
-        // 'keyReleased'");
+
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+
+    }
+
+    public static void main(String[] args) {
+        Interface teste = new Interface();
     }
 
 }
