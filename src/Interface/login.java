@@ -1,36 +1,40 @@
 package src.Interface;
 
 import javax.swing.*;
+import javax.swing.plaf.TreeUI;
+
 import java.awt.*;
 import java.awt.event.*;
 
 public class Login extends JFrame implements ActionListener {
 	/* Atributos */
-	JPanel mainPanel;
-	JTextField usernameInput;
-	JLabel usernameLabel;
-	JButton loginButton;
+	private JPanel mainPanel;
+	private JTextField usernameInput;
+	private JLabel usernameLabel;
+	private JButton loginButton;
+	public boolean verifyLogin = false;
 
 	// Construtor
-	Login() {
+	public Login() {
 		// Config basica
 		this.setSize(new Dimension(400, 200));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Login");
 		this.setLocationRelativeTo(null);
-		this.setLayout(null);
 
+		// Painel principal
 		mainPanel = new JPanel();
 		mainPanel.setSize(new Dimension(400, 200));
 		mainPanel.setBackground(Color.DARK_GRAY);
 		mainPanel.setLayout(null);
 
-		// Caixa de texto e sua label
+		// Label do input de username
 		usernameLabel = new JLabel("Username");
 		usernameLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		usernameLabel.setBounds(154, 10, 200, 50);
 		usernameLabel.setForeground(Color.WHITE);
 
+		// Caixa de texto
 		usernameInput = new JTextField();
 		usernameInput.setFont(new Font("Arial", Font.BOLD, 13));
 		usernameInput.setBounds(50, 50, 280, 30);
@@ -58,13 +62,11 @@ public class Login extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(this, "Welcome " + usernameInput.getText(), "Welcome",
 				JOptionPane.INFORMATION_MESSAGE);
+		this.verifyLogin = true;
+		this.setVisible(false);
 	}
 
 	public String getUsername() {
 		return usernameInput.getText();
-	}
-
-	public static void main(String[] args) {
-		Login teste = new Login();
 	}
 }
