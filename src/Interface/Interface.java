@@ -85,7 +85,6 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
                 // Limpa caixa de texto
                 messageInput.setText("");
-
             } catch (Exception ex) {
                 System.out.println(ex);
             }
@@ -102,6 +101,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
                 // Limpa caixa de texto
                 messageInput.setText("");
+                event.consume();
             } catch (Exception ex) {
                 System.out.println(ex);
             }
