@@ -44,13 +44,15 @@ public class Cliente {
         Login login = new Login();
 
         String nome = null;
+        String host = null;
 
         while (login.verifyLogin == false) {
             nome = login.getUsername();
+            host = login.getHost();
         }
 
         // dispara cliente
-        new Cliente("127.0.0.1", 12345, nome).executa();
+        new Cliente(host, 12345, nome).executa();
     }
 
     public void executa() throws UnknownHostException, IOException {
@@ -65,7 +67,6 @@ public class Cliente {
             String destiny = splitMessage[0]; // Pega o destinatário
 
             if (destiny == this.name) {
-                System.out.println("mudou message");
                 message = "You:" + splitMessage;
             }
             mainInterface.write(message);
