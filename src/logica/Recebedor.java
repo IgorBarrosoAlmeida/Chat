@@ -34,5 +34,7 @@ public class Recebedor implements Runnable {
                 System.out.println(msg);
             }
         }
+
+        s.close();
     }
 }

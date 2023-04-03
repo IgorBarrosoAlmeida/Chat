@@ -3,8 +3,10 @@ package src.logica;
 /* Importações */
 import java.io.*;
 import java.net.*;
-import java.nio.file.ClosedWatchServiceException;
 import java.util.Scanner;
+
+import javax.security.auth.DestroyFailedException;
+
 import src.Interface.*;
 
 /**
@@ -65,10 +67,10 @@ public class Cliente {
             String destiny = splitMessage[0]; // Pega o destinatário
 
             if (destiny == this.name) {
-
-            } else {
-                mainInterface.write(message);
+                System.out.println("mudou message");
+                message = "You:" + splitMessage;
             }
+            mainInterface.write(message);
         }
 
         /*
@@ -86,7 +88,6 @@ public class Cliente {
          * saida.close();
          * teclado.close();
          */
-        System.out.println("Funcionou");
         clienteSocket.close();
     }
 }
