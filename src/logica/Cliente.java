@@ -6,7 +6,6 @@ import java.net.*;
 import java.nio.file.ClosedWatchServiceException;
 import java.util.Scanner;
 import src.Interface.*;
-import src.Interface.*;
 
 /**
  *
@@ -19,6 +18,18 @@ public class Cliente {
     private String host;
     private int porta;
     private String name;
+    private Interface mainInterface;
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    private Socket clienteSocket;
+
+    public Socket getClienteSocket() {
+        return clienteSocket;
+    }
 
     // Construtores
     public Cliente(String host, int porta, String name) {
@@ -31,7 +42,7 @@ public class Cliente {
     // Main
     public static void main(String[] args) throws UnknownHostException, IOException {
         Login login = new Login();
-        
+
         String nome = null;
 
         while (login.verifyLogin == false) {
@@ -43,25 +54,39 @@ public class Cliente {
     }
 
     public void executa() throws UnknownHostException, IOException {
-        Interface interface1 = new Interface();
-       
-        Socket cliente = new Socket(this.host, this.porta);
-        
-        interface1.userChat(this.name);
+        clienteSocket = new Socket(this.host, this.porta);
+        mainInterface = new Interface(this);
 
-        // thread para receber mensagens do servidor
-        Recebedor r = new Recebedor(cliente.getInputStream(), this.name);
-        new Thread(r).start();
+        Scanner reader = new Scanner(this.clienteSocket.getInputStream());
 
-        // lê msgs do teclado e manda pro servidor
-        Scanner teclado = new Scanner(System.in);
-        PrintStream saida = new PrintStream(cliente.getOutputStream());
-        while (teclado.hasNextLine()) {
-            saida.println(this.name + " " + teclado.nextLine());
+        while (reader.hasNextLine()) {
+            String message = reader.nextLine();
+            String[] splitMessage = message.split(":");
+            String destiny = splitMessage[0]; // Pega o destinatário
+
+            if (destiny == this.name) {
+
+            } else {
+                mainInterface.write(message);
+            }
         }
 
-        saida.close();
-        teclado.close();
-        cliente.close();
+        /*
+         * // thread para receber mensagens do servidor
+         * Recebedor r = new Recebedor(cliente.getInputStream(), this.name);
+         * new Thread(r).start();
+         * 
+         * // lê msgs do teclado e manda pro servidor
+         * Scanner teclado = new Scanner(System.in);
+         * PrintStream saida = new PrintStream(cliente.getOutputStream());
+         * while (teclado.hasNextLine()) {
+         * saida.println(this.name + " " + teclado.nextLine());
+         * }
+         * 
+         * saida.close();
+         * teclado.close();
+         */
+        System.out.println("Funcionou");
+        clienteSocket.close();
     }
 }

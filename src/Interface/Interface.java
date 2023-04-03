@@ -3,14 +3,15 @@ package src.Interface;
 /* Imports */
 import java.awt.GridBagLayout;
 import java.awt.event.*;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 
 import javax.swing.*;
 import java.awt.*;
 
+import src.logica.*;
+
 public class Interface extends JFrame implements KeyListener, ActionListener {
-    /* Atributos */
+    // Atributos
     private JPanel mainPanel;
     private JPanel messagePanel;
     private JTextArea messageInput;
@@ -18,8 +19,12 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
     private JScrollPane scrollChat;
     private JTextArea currentMessage;
 
+    private Cliente cliente;
+
     // Construtor
-    public Interface() {
+    public Interface(Cliente cliente) {
+        this.cliente = cliente;
+
         // Config basica
         this.setSize(new Dimension(400, 800));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,8 +85,10 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == this.messageButton) {
             try {
-                String message = messageInput.getText();
-                write(message);
+                String message = this.cliente.getName() + ": " + messageInput.getText();
+                PrintStream output = new PrintStream(this.cliente.getClienteSocket().getOutputStream());
+
+                output.println(message);
 
                 // Limpa caixa de texto
                 messageInput.setText("");
@@ -96,9 +103,10 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         // Se a tecla pressionada for enter envia a mensagem
         if (event.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
-                String message = messageInput.getText();
-                write(message);
+                String message = this.cliente.getName() + ": " + messageInput.getText();
+                PrintStream output = new PrintStream(this.cliente.getClienteSocket().getOutputStream());
 
+                output.println(message);
                 // Limpa caixa de texto
                 messageInput.setText("");
                 event.consume();
@@ -118,11 +126,11 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         // Não precisa da implementação
     }
 
-    public static void main(String[] args) {
-        Interface i = new Interface();
-    }
+    // public static void main(String[] args) {
+    // Interface i = new Interface();
+    // }
 
-    public void userChat(String nameUser){
+    public void userChat(String nameUser) {
         try {
             write(nameUser + " se conectou chat");
         } catch (Exception ex) {
@@ -130,5 +138,3 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         }
     }
 }
-
-   
