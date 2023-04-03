@@ -5,8 +5,6 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-import javax.security.auth.DestroyFailedException;
-
 import src.Interface.*;
 
 /**
@@ -73,21 +71,6 @@ public class Cliente {
             mainInterface.write(message);
         }
 
-        /*
-         * // thread para receber mensagens do servidor
-         * Recebedor r = new Recebedor(cliente.getInputStream(), this.name);
-         * new Thread(r).start();
-         * 
-         * // lê msgs do teclado e manda pro servidor
-         * Scanner teclado = new Scanner(System.in);
-         * PrintStream saida = new PrintStream(cliente.getOutputStream());
-         * while (teclado.hasNextLine()) {
-         * saida.println(this.name + " " + teclado.nextLine());
-         * }
-         * 
-         * saida.close();
-         * teclado.close();
-         */
         clienteSocket.close();
     }
 }

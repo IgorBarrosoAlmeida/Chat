@@ -58,19 +58,21 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         messageButton.setBounds(270, 10, 65, 20);
         messageButton.addActionListener(this);
 
-        // Caixa de exibição da mensagem enviada
+        // Caixa de exibição das mensagens enviadas
         currentMessage = new JTextArea();
         currentMessage.setEditable(false);
         currentMessage.setBackground(Color.GRAY);
-        currentMessage.setFont(new Font("Arial", Font.BOLD, 13));
-        currentMessage.setForeground(Color.BLUE);
+        currentMessage.setFont(new Font("Arial", Font.BOLD, 15));
+        currentMessage.setForeground(Color.WHITE);
+        currentMessage.setLineWrap(true);
 
-        // Chat de fato
+        // Painel "scroll" que contem as mensagens
         scrollChat = new JScrollPane(currentMessage);
         scrollChat.setBounds(15, 10, 350, 680);
         scrollChat.getViewport().setBackground(Color.GRAY);
         scrollChat.getVerticalScrollBar().setBackground(Color.BLACK);
         scrollChat.getHorizontalScrollBar().setBackground(Color.BLACK);
+        scrollChat.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         messagePanel.add(messageButton);
         messagePanel.add(messageInput);
@@ -83,7 +85,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
     // Função de escrita no scroll
     public void write(String message) {
-        currentMessage.append(message + "\n");
+        currentMessage.append(message + "\n\n");
     }
 
     @Override

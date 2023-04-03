@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Login extends JFrame implements ActionListener {
+public class Login extends JFrame implements ActionListener, KeyListener {
 	/* Atributos */
 	private JPanel mainPanel;
 	private JTextField usernameInput;
@@ -37,6 +37,8 @@ public class Login extends JFrame implements ActionListener {
 		usernameInput = new JTextField();
 		usernameInput.setFont(new Font("Arial", Font.BOLD, 13));
 		usernameInput.setBounds(50, 50, 280, 30);
+		// Escutador de tecla
+		usernameInput.addKeyListener(this);
 
 		// Botão de enviar
 		loginButton = new JButton("Enter to chat");
@@ -44,7 +46,7 @@ public class Login extends JFrame implements ActionListener {
 		loginButton.setBounds(118, 95, 140, 30);
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setBackground(Color.GRAY);
-
+		// Escutador de click
 		loginButton.addActionListener(this);
 
 		// Adiciona à janela principal
@@ -58,14 +60,36 @@ public class Login extends JFrame implements ActionListener {
 
 	// Métodos de interação com o Usuario, interface ActionListener
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		JOptionPane.showMessageDialog(this, "Welcome " + usernameInput.getText(), "Welcome",
-				JOptionPane.INFORMATION_MESSAGE);
-		this.verifyLogin = true;
-		this.setVisible(false);
+	public void actionPerformed(ActionEvent event) {
+		if (event.getSource() == loginButton) {
+			JOptionPane.showMessageDialog(this, "Welcome " + usernameInput.getText(), "Welcome",
+					JOptionPane.INFORMATION_MESSAGE);
+			this.verifyLogin = true;
+			this.setVisible(false);
+		}
 	}
 
 	public String getUsername() {
 		return usernameInput.getText();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// Não precisa da implementação
+	}
+
+	@Override
+	public void keyPressed(KeyEvent event) {
+		if (event.getKeyCode() == KeyEvent.VK_ENTER) {
+			JOptionPane.showMessageDialog(this, "Welcome " + usernameInput.getText(), "Welcome",
+					JOptionPane.INFORMATION_MESSAGE);
+			this.verifyLogin = true;
+			this.setVisible(false);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// Não precisa da implementação
 	}
 }
