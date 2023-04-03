@@ -3,6 +3,9 @@ package src.Interface;
 /* Imports */
 import java.awt.GridBagLayout;
 import java.awt.event.*;
+import java.io.IOException;
+import java.io.PrintStream;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,11 +43,14 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         // Botão de enviar
         messageButton = new JButton("Send");
         messageButton.setBounds(270, 10, 65, 20);
+        messageButton.addActionListener(this);
 
         // Chat de fato
         scrollChat = new JScrollPane();
         scrollChat.setBounds(15, 10, 350, 680);
         scrollChat.getViewport().setBackground(Color.GRAY);
+        scrollChat.getVerticalScrollBar().setBackground(Color.BLACK);
+        scrollChat.getHorizontalScrollBar().setBackground(Color.BLACK);
 
         messagePanel.add(messageButton);
         messagePanel.add(messageInput);
@@ -57,7 +63,11 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // try {
 
+        // } catch (IOException e1) {
+        // System.out.println(e1);
+        // }
     }
 
     @Override
