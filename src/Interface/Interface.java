@@ -16,7 +16,9 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
     private JTextArea messageInput;
     private JButton messageButton;
     private JScrollPane scrollChat;
+    private JTextArea currentMessage;
 
+    // Construtor
     public Interface() {
         // Config basica
         this.setSize(new Dimension(400, 800));
@@ -39,14 +41,22 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         // Caixa de entrada da mensagem
         messageInput = new JTextArea();
         messageInput.setBounds(10, 10, 250, 20);
+        messageInput.addKeyListener(this);
 
         // Botão de enviar
         messageButton = new JButton("Send");
         messageButton.setBounds(270, 10, 65, 20);
         messageButton.addActionListener(this);
 
+        // Caixa de exibição da mensagem enviada
+        currentMessage = new JTextArea();
+        currentMessage.setEditable(false);
+        currentMessage.setBackground(Color.GRAY);
+        currentMessage.setFont(new Font("Arial", Font.BOLD, 13));
+        currentMessage.setForeground(Color.BLUE);
+
         // Chat de fato
-        scrollChat = new JScrollPane();
+        scrollChat = new JScrollPane(currentMessage);
         scrollChat.setBounds(15, 10, 350, 680);
         scrollChat.getViewport().setBackground(Color.GRAY);
         scrollChat.getVerticalScrollBar().setBackground(Color.BLACK);
@@ -61,32 +71,54 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         this.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // try {
-
-        // } catch (IOException e1) {
-        // System.out.println(e1);
-        // }
+    // Função de escrita no scroll
+    public void write(String message) {
+        currentMessage.append(message + "\n");
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == this.messageButton) {
+            try {
+                String message = messageInput.getText();
+                write(message);
 
+                // Limpa caixa de texto
+                messageInput.setText("");
+
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent event) {
+        // Se a tecla pressionada for enter envia a mensagem
+        if (event.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String message = messageInput.getText();
+                write(message);
+
+                // Limpa caixa de texto
+                messageInput.setText("");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        // Não precisa da implementação
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        // Não precisa da implementação
     }
 
     public static void main(String[] args) {
-        Interface teste = new Interface();
+        Interface i = new Interface();
     }
-
 }
