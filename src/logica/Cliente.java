@@ -1,10 +1,9 @@
 package src.logica;
 
-/* Importações */
+/* Imports */
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
-
 import src.Interface.*;
 
 /**
@@ -16,25 +15,25 @@ import src.Interface.*;
 public class Cliente {
     // Atributos
     private String host;
-    private int porta;
+    private int port;
     private String name;
+
     private Interface mainInterface;
+    private Socket clienteSocket;
 
     // Getters
     public String getName() {
         return name;
     }
 
-    private Socket clienteSocket;
-
     public Socket getClienteSocket() {
         return clienteSocket;
     }
 
     // Construtores
-    public Cliente(String host, int porta, String name) {
+    public Cliente(String host, int port, String name) {
         this.host = host;
-        this.porta = porta;
+        this.port = port;
         this.name = name;
     }
 
@@ -56,19 +55,13 @@ public class Cliente {
     }
 
     public void executa() throws UnknownHostException, IOException {
-        clienteSocket = new Socket(this.host, this.porta);
+        clienteSocket = new Socket(this.host, this.port);
         mainInterface = new Interface(this);
 
         Scanner reader = new Scanner(this.clienteSocket.getInputStream());
 
         while (reader.hasNextLine()) {
             String message = reader.nextLine();
-            String[] splitMessage = message.split(":");
-            String destiny = splitMessage[0]; // Pega o destinatário
-
-            if (destiny == this.name) {
-                message = "You:" + splitMessage;
-            }
             mainInterface.write(message);
         }
 

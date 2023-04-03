@@ -1,6 +1,6 @@
 package src.logica;
 
-/* Importações */
+/* Imports */
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -16,12 +16,12 @@ import java.util.List;
  */
 public class Servidor {
     // Atributos
-    private int porta;
+    private int port;
     private List<PrintStream> clientes;
 
-    // Construtores
-    public Servidor(int porta) {
-        this.porta = porta;
+    // Construtor
+    public Servidor(int port) {
+        this.port = port;
         this.clientes = new ArrayList<>();
     }
 
@@ -31,8 +31,8 @@ public class Servidor {
     }
 
     public void executa() throws IOException {
-        ServerSocket servidor = new ServerSocket(this.porta);
-        System.out.println("Porta 12345 aberta!");
+        ServerSocket servidor = new ServerSocket(this.port);
+        System.out.println("Port 12345 aberta!");
 
         while (true) {
             // aceita um cliente

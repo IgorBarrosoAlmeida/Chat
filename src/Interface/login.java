@@ -1,19 +1,19 @@
 package src.Interface;
 
+/* Imports */
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
 
 public class Login extends JFrame implements ActionListener, KeyListener {
-	/* Atributos */
+	// Atributos
 	private JPanel mainPanel;
 	private JLabel usernameLabel;
 	private JTextField usernameInput;
 	private JLabel hostLabel;
 	private JTextField hostInput;
-
 	private JButton loginButton;
+
 	public boolean verifyLogin = false;
 
 	// Construtor
@@ -75,7 +75,16 @@ public class Login extends JFrame implements ActionListener, KeyListener {
 		this.setVisible(true);
 	}
 
-	// Métodos de interação com o Usuario, interface ActionListener
+	// Getters dos inputs
+	public String getUsername() {
+		return usernameInput.getText();
+	}
+
+	public String getHost() {
+		return hostInput.getText();
+	}
+
+	// Método executado quando o ActionListener identifica uma ação
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == loginButton) {
@@ -86,19 +95,12 @@ public class Login extends JFrame implements ActionListener, KeyListener {
 		}
 	}
 
-	public String getUsername() {
-		return usernameInput.getText();
-	}
-
-	public String getHost() {
-		return hostInput.getText();
-	}
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// Não precisa da implementação
 	}
 
+	// Método executado quando o KeyListener identifica uma key
 	@Override
 	public void keyPressed(KeyEvent event) {
 		if (event.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -123,9 +125,5 @@ public class Login extends JFrame implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// Não precisa da implementação
-	}
-
-	public static void main(String[] args) {
-		Login l = new Login();
 	}
 }

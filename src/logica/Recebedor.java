@@ -1,6 +1,6 @@
 package src.logica;
 
-/* Importações */
+/* Imports */
 import java.io.InputStream;
 import java.util.Scanner;
 

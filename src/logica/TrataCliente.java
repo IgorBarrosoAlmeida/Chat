@@ -1,6 +1,6 @@
 package src.logica;
 
-/* Importações */
+/* Imports */
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -11,10 +11,11 @@ import java.util.Scanner;
  *        Eduardo Evangelista Santos
  */
 public class TrataCliente implements Runnable {
-
+  // Atributos
   private InputStream cliente;
   private Servidor servidor;
 
+  // Construtor
   public TrataCliente(InputStream cliente, Servidor servidor) {
     this.cliente = cliente;
     this.servidor = servidor;

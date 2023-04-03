@@ -3,10 +3,8 @@ package src.Interface;
 /* Imports */
 import java.awt.event.*;
 import java.io.*;
-
 import javax.swing.*;
 import java.awt.*;
-
 import src.logica.*;
 
 public class Interface extends JFrame implements KeyListener, ActionListener {
@@ -88,6 +86,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         currentMessage.append(message + "\n\n");
     }
 
+    // Método executado quando o ActionListener identifica uma ação
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == this.messageButton) {
@@ -99,6 +98,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
         }
     }
 
+    // Método executado quando o KeyListener identifica uma key
     @Override
     public void keyPressed(KeyEvent event) {
         // Se a tecla pressionada for enter envia a mensagem
@@ -121,13 +121,5 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
     @Override
     public void keyTyped(KeyEvent e) {
         // Não precisa da implementação
-    }
-
-    public void userChat(String nameUser) {
-        try {
-            write(nameUser + " se conectou chat");
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
     }
 }
