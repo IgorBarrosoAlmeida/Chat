@@ -121,4 +121,14 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
     public static void main(String[] args) {
         Interface i = new Interface();
     }
+
+    public void userChat(String nameUser){
+        try {
+            write(nameUser + " se conectou chat");
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
 }
+
+   

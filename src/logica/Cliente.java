@@ -6,6 +6,7 @@ import java.net.*;
 import java.nio.file.ClosedWatchServiceException;
 import java.util.Scanner;
 import src.Interface.*;
+import src.Interface.*;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Cliente {
     // Main
     public static void main(String[] args) throws UnknownHostException, IOException {
         Login login = new Login();
+        
         String nome = null;
 
         while (login.verifyLogin == false) {
@@ -41,8 +43,11 @@ public class Cliente {
     }
 
     public void executa() throws UnknownHostException, IOException {
+        Interface interface1 = new Interface();
+       
         Socket cliente = new Socket(this.host, this.porta);
-        System.out.println(this.name + " se conectou ao servidor");
+        
+        interface1.userChat(this.name);
 
         // thread para receber mensagens do servidor
         Recebedor r = new Recebedor(cliente.getInputStream(), this.name);
