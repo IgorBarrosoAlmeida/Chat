@@ -42,7 +42,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
         // Painel de escrita das mensagens
         messagePanel = new JPanel();
-        messagePanel.setBounds(15, 705, 350, 45);
+        messagePanel.setBounds(15, 705, 370, 45);
         messagePanel.setBackground(Color.GRAY);
         messagePanel.setLayout(null);
 
@@ -53,7 +53,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
         // Botão de enviar
         messageButton = new JButton("Send");
-        messageButton.setBounds(270, 10, 65, 20);
+        messageButton.setBounds(270, 10, 85, 20);
         messageButton.addActionListener(this);
 
         // Caixa de exibição das mensagens enviadas
@@ -66,7 +66,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
         // Painel "scroll" que contem as mensagens
         scrollChat = new JScrollPane(currentMessage);
-        scrollChat.setBounds(15, 10, 350, 680);
+        scrollChat.setBounds(15, 10, 370, 680);
         scrollChat.getViewport().setBackground(Color.GRAY);
         scrollChat.getVerticalScrollBar().setBackground(Color.BLACK);
         scrollChat.getHorizontalScrollBar().setBackground(Color.BLACK);
@@ -83,7 +83,7 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
     // Função de escrita no scroll
     public void write(String message) {
-        currentMessage.append(message + "\n\n");
+        currentMessage.append(message + "\n");
     }
 
     // Método executado quando o ActionListener identifica uma ação
