@@ -33,32 +33,32 @@ public class Login extends JFrame implements ActionListener, KeyListener {
 		// Label do input de username
 		usernameLabel = new JLabel("Username");
 		usernameLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		usernameLabel.setBounds(50, 10, 200, 50);
+		usernameLabel.setBounds(53, 10, 200, 50);
 		usernameLabel.setForeground(Color.WHITE);
 
 		// Caixa de texto username
 		usernameInput = new JTextField();
 		usernameInput.setFont(new Font("Arial", Font.BOLD, 13));
-		usernameInput.setBounds(50, 50, 280, 30);
+		usernameInput.setBounds(53, 50, 280, 30);
 		usernameInput.addKeyListener(this); // Escutador de tecla
 
 		// Label do input de host
 		hostLabel = new JLabel("Host ip");
 		hostLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		hostLabel.setBounds(50, 80, 200, 50);
+		hostLabel.setBounds(53, 80, 200, 50);
 		hostLabel.setForeground(Color.WHITE);
 
 		// Caixa de texto username
 		hostInput = new JTextField();
 		hostInput.setFont(new Font("Arial", Font.BOLD, 13));
-		hostInput.setBounds(50, 120, 280, 30);
+		hostInput.setBounds(53, 120, 280, 30);
 		hostInput.addKeyListener(this); // Escutador de tecla
 		hostInput.setText("127.0.0.1");
 
 		// Botão de enviar
 		loginButton = new JButton("Enter to chat");
 		loginButton.setFont(new Font("Arial", Font.BOLD, 15));
-		loginButton.setBounds(118, 180, 140, 30);
+		loginButton.setBounds(118, 180, 160, 30);
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setBackground(Color.GRAY);
 		loginButton.addKeyListener(this); // Escutador de tecla

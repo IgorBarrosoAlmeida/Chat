@@ -79,6 +79,9 @@ public class Interface extends JFrame implements KeyListener, ActionListener {
 
         this.add(mainPanel);
         this.setVisible(true);
+
+        // Mensagem de conexão
+        output.println(this.cliente.getName() + " connected to the chat");
     }
 
     // Função de escrita no scroll
