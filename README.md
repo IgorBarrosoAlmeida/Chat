@@ -1,4 +1,4 @@
-# Chat com socket e multithread 
+# Chat
 
 O projeto se trata de um chat em java, que foi implementado utilizando socket e multithread para realizar a conexão servidor/cliente. Além disso, a interface gráfica foi implementada com o framework java swing.
 
