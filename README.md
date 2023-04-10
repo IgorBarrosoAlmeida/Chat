@@ -5,7 +5,22 @@ O projeto se trata de um chat em java, que foi implementado utilizando socket e 
 
 ## 🚀 Desenvolvimento
 
-...
+Descrição breve do desenvolvimento do projeto:<br>
+
+Inicialmente foi criada toda a lógica de conexão entre servidor e cliente utilizando sockets e multithread. Com a conexão entre clientes e servidor estabelecida, precisavamos fazer com que as mensagens mandadas para o servidor fossem distribuidas para todos os clientes conectados. Toda essa distribuição é feita nas classes "Servidor.java", "Recebedor.java" e "TrataCliente.java". <br>
+As seguintes responsabilidades foram atribuidas às classes "Servidor.java" e "Cliente.java": 
+* Cliente/Client: Cada usuário criará uma instância do cliente e fará uma conexão com o servidor socket. O cliente deverá informar o endereço do server socket e a respectiva porta, por isso é necessário executar o Server.java antes.
+* Servidor/Server:  servidor servirá como unidade centralizadora de todas as conexões recebidas via socket e terá como responsabilidade o envio de uma mensagem (recebida de um cliente) para todos os demais conectados no servidor. Quando um cliente se conecta a ele o mesmo cria uma Thread para aquele cliente, ou seja, cada conexão terá sua respectiva Thread e o servidor fará a gestão disso;
+
+Após isso precisavamos implementar duas interfaces, utilizando java swing, uma de login onde o usuario deveria colocar seu nome e o ip do host, e a interface do chat de fato. Essas são as interfaces:
+* Login:
+<img src="./img/Login.jpg" alt="imagem da inteface de login">
+<img src="./img/LoginPopUp.jpg" alt="imagem da inteface de login">
+
+* Chat:
+<img src="./img/Chat.jpg" alt="imagem da inteface de login">
+
+* 
 
 ## 📋 Como rodar
 
