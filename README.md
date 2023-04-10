@@ -1,5 +1,4 @@
 # Chat com socket e multithread 
-<img width="40" height="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
 
 O projeto se trata de um chat em java, que foi implementado utilizando socket e multithread para realizar a conexão servidor/cliente. Além disso, a interface gráfica foi implementada com o framework java swing.
 
@@ -14,13 +13,13 @@ As seguintes responsabilidades foram atribuidas às classes "Servidor.java" e "C
 
 Após isso precisavamos implementar duas interfaces, utilizando java swing, uma de login onde o usuario deveria colocar seu nome e o ip do host, e a interface do chat de fato. Essas são as interfaces:
 * Login:
-<img src="./img/Login.jpg" alt="imagem da inteface de login">
-<img src="./img/LoginPopUp.jpg" alt="imagem da inteface de login">
+<div display="flex">
+<img src="./img/Login.jpg" alt="imagem da inteface de login" width="350" height="230">
+<img src="./img/LoginPopUp.jpg" alt="imagem da inteface de login" width="350" height="230">
+</div>
 
 * Chat:
-<img src="./img/Chat.jpg" alt="imagem da inteface de login">
-
-* 
+<img src="./img/Chat.jpg" alt="imagem da inteface de login" width="350" height="700">
 
 ## 📋 Como rodar
 
